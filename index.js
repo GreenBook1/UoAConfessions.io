@@ -63,24 +63,26 @@ async function newpostadd(){
     let text1 = document.getElementById("ptext").value;
     let catg = document.getElementById("category").value;
     if(catg=="" || text1.length<50){
-        confirm("Category not Selected or Post is too short");
+        alert("Category not Selected or Post is too short");
     }
     else{
         try{
+            console.log(lusr);
 
             enrolledtad = await client.mutation("tasks:createpost", {
                 cat: catg,
         byid: lusr.toString(),
         content: text1,
               }).then(  ()=>{
-
+                console.log(lusr);
                 location.reload();
 
               });
 
 
         }catch(e){
-            alert("Some Error Occured !")
+            console.log(lusr);
+            alert("Some Error Occured !");
         }
     }
 }
